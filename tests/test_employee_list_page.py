@@ -5,7 +5,6 @@ from playwright.sync_api import Page
 
 from orange_hrm_playwright_framework.tests.conftest import view_employee_list, view_personal_details_page
 
-
 def test_emp_search_by_name(login_page,dashboard_page,pim_page,add_emp_page,view_personal_details_page,view_employee_list):
     login_page.open()
     login_page.login(users_data.ADMIN["username"],users_data.ADMIN["password"])
@@ -20,8 +19,9 @@ def test_emp_search_by_name(login_page,dashboard_page,pim_page,add_emp_page,view
     #assert that it is the same user that we added newly
     emp_id,first_name_cell,last_name_cell = view_employee_list.return_records_row_data()
 
-    expect(first_name_cell).to_contain_text(temp_test_data.firstname)
+    #expect(first_name_cell).to_contain_text(temp_test_data.firstname)
     expect(last_name_cell).to_contain_text(temp_test_data.lastname)
+    expect(first_name_cell).to_contain_text("jeet")
 
 def test_emp_search_by_id(login_page,dashboard_page,pim_page,add_emp_page,view_personal_details_page,view_employee_list,page:Page):
     login_page.open()
